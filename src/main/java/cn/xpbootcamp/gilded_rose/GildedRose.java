@@ -9,11 +9,10 @@ class GildedRose {
 
     public void update_quality() {
         for (int i = 0; i < goods.length; i++) {
-            String sulfuras = "Sulfuras, Hand of Ragnaros";
             if (!isAgedBrie(goods[i].getName())
                     && !isBackstagePasses(goods[i].getName())) {
                 if (goods[i].getQuality() > 0) {
-                    if (!goods[i].getName().equals(sulfuras)) {
+                    if (!isSulfuras(goods[i].getName())) {
                         goods[i].setQuality(goods[i].getQuality() - 1);
                     }
                 }
@@ -37,7 +36,7 @@ class GildedRose {
                 }
             }
 
-            if (!goods[i].getName().equals(sulfuras)) {
+            if (!isSulfuras(goods[i].getName())) {
                 goods[i].setSellIn(goods[i].getSellIn() - 1);
             }
 
@@ -45,7 +44,7 @@ class GildedRose {
                 if (!isAgedBrie(goods[i].getName())) {
                     if (!isBackstagePasses(goods[i].getName())) {
                         if (goods[i].getQuality() > 0) {
-                            if (!goods[i].getName().equals(sulfuras)) {
+                            if (!isSulfuras(goods[i].getName())) {
                                 goods[i].setQuality(goods[i].getQuality() - 1);
                             }
                         }
@@ -67,5 +66,9 @@ class GildedRose {
 
     private boolean isBackstagePasses(final String goodsName) {
         return "Backstage passes to a TAFKAL80ETC concert".equals(goodsName);
+    }
+
+    private boolean isSulfuras(final String goodsName) {
+        return "Sulfuras, Hand of Ragnaros".equals(goodsName);
     }
 }
