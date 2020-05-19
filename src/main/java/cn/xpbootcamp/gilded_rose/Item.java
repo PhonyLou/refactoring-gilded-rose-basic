@@ -38,4 +38,8 @@ public class Item {
     public String toString() {
         return this.name + ", " + this.sellIn + ", " + this.quality;
     }
+
+    boolean isAgedBrie() {
+        return "Aged Brie".equals(this.getName());
+    }
 }

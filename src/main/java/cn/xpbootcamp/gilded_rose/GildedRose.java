@@ -9,7 +9,7 @@ class GildedRose {
 
     public void update_quality() {
         for (int i = 0; i < goods.length; i++) {
-            if (!isAgedBrie(goods[i].getName())
+            if (!goods[i].isAgedBrie()
                     && !isBackstagePasses(goods[i].getName())) {
                 if (goods[i].getQuality() > 0) {
                     if (!isSulfuras(goods[i].getName())) {
@@ -41,7 +41,7 @@ class GildedRose {
             }
 
             if (goods[i].getSellIn() < 0) {
-                if (!isAgedBrie(goods[i].getName())) {
+                if (!goods[i].isAgedBrie()) {
                     if (!isBackstagePasses(goods[i].getName())) {
                         if (goods[i].getQuality() > 0) {
                             if (!isSulfuras(goods[i].getName())) {
@@ -58,10 +58,6 @@ class GildedRose {
                 }
             }
         }
-    }
-
-    private boolean isAgedBrie(final String goodsName) {
-        return "Aged Brie".equals(goodsName);
     }
 
     private boolean isBackstagePasses(final String goodsName) {
