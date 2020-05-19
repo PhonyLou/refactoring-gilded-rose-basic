@@ -50,4 +50,8 @@ public class Item {
     boolean isSulfuras() {
         return "Sulfuras, Hand of Ragnaros".equals(this.getName());
     }
+
+    boolean isRegularGoods() {
+        return !isSulfuras() && !isBackstagePasses() && !isAgedBrie();
+    }
 }
