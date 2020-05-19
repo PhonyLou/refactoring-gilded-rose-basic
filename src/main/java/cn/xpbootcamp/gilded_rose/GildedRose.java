@@ -12,7 +12,7 @@ class GildedRose {
             if (!goods[i].isAgedBrie()
                     && !goods[i].isBackstagePasses()) {
                 if (goods[i].getQuality() > 0) {
-                    if (!isSulfuras(goods[i].getName())) {
+                    if (!goods[i].isSulfuras()) {
                         goods[i].setQuality(goods[i].getQuality() - 1);
                     }
                 }
@@ -36,7 +36,7 @@ class GildedRose {
                 }
             }
 
-            if (!isSulfuras(goods[i].getName())) {
+            if (!goods[i].isSulfuras()) {
                 goods[i].setSellIn(goods[i].getSellIn() - 1);
             }
 
@@ -44,7 +44,7 @@ class GildedRose {
                 if (!goods[i].isAgedBrie()) {
                     if (!goods[i].isBackstagePasses()) {
                         if (goods[i].getQuality() > 0) {
-                            if (!isSulfuras(goods[i].getName())) {
+                            if (!goods[i].isSulfuras()) {
                                 goods[i].setQuality(goods[i].getQuality() - 1);
                             }
                         }
@@ -58,10 +58,5 @@ class GildedRose {
                 }
             }
         }
-    }
-
-
-    private boolean isSulfuras(final String goodsName) {
-        return "Sulfuras, Hand of Ragnaros".equals(goodsName);
     }
 }

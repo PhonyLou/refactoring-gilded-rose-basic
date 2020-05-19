@@ -46,4 +46,8 @@ public class Item {
     boolean isBackstagePasses() {
         return "Backstage passes to a TAFKAL80ETC concert".equals(this.getName());
     }
+
+    boolean isSulfuras() {
+        return "Sulfuras, Hand of Ragnaros".equals(this.getName());
+    }
 }
