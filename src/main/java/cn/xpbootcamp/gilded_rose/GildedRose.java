@@ -14,19 +14,20 @@ class GildedRose {
         for (Item good : goods) {
             if (good.isRegularGoods() && good.getQuality() > MIN_QUALITY) {
                 good.setQuality(good.getQuality() - 1);
-            } else if (good.isAgedBrie() || good.isBackstagePasses()) {
+            } else if (good.isAgedBrie()) {
                 if (good.getQuality() < MAX_QUALITY) {
                     good.setQuality(good.getQuality() + 1);
+                }
+            } else if (good.isBackstagePasses()) {
+                if (good.getQuality() < MAX_QUALITY) {
+                    good.setQuality(good.getQuality() + 1);
+                }
+                if (good.getSellIn() < 11 && good.getQuality() < MAX_QUALITY) {
+                    good.setQuality(good.getQuality() + 1);
+                }
 
-                    if (good.isBackstagePasses()) {
-                        if (good.getSellIn() < 11 && good.getQuality() < MAX_QUALITY) {
-                            good.setQuality(good.getQuality() + 1);
-                        }
-
-                        if (good.getSellIn() < 6 && good.getQuality() < MAX_QUALITY) {
-                            good.setQuality(good.getQuality() + 1);
-                        }
-                    }
+                if (good.getSellIn() < 6 && good.getQuality() < MAX_QUALITY) {
+                    good.setQuality(good.getQuality() + 1);
                 }
             }
 
