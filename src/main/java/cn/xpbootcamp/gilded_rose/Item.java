@@ -12,6 +12,14 @@ public class Item {
 
     public int quality;
 
+    public int getQuality() {
+        return quality;
+    }
+
+    public void setQuality(int quality) {
+        this.quality = quality;
+    }
+
     public Item(String name, int sell_in, int quality) {
         this.name = name;
         this.sell_in = sell_in;
