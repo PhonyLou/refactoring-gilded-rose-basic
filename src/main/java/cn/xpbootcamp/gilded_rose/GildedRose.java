@@ -47,6 +47,12 @@ class GildedRose {
                     }
                     continue;
                 }
+
+                if (good.isBackstagePasses()) {
+                    good.setQuality(0);
+                    continue;
+                }
+
                 if (!good.isAgedBrie()) {
                     if (!good.isBackstagePasses()) {
                         if (good.getQuality() > 0) {
@@ -54,8 +60,6 @@ class GildedRose {
                                 good.setQuality(good.getQuality() - 1);
                             }
                         }
-                    } else {
-                        good.setQuality(0);
                     }
                 }
             }
