@@ -12,8 +12,8 @@ class GildedRose {
 
     public void update_quality() {
         for (Item good : goods) {
-            if (good.isRegularGoods() && good.getQuality() > MIN_QUALITY) {
-                good.setQuality(good.getQuality() - 1);
+            if (good.isRegularGoods()) {
+                good.updateRegularGoodsWhenOneDayPassed();
             } else if (good.isAgedBrie()) {
                 if (good.getQuality() < MAX_QUALITY) {
                     good.setQuality(good.getQuality() + 1);
@@ -31,7 +31,7 @@ class GildedRose {
                 }
             }
 
-            if (!good.isSulfuras()) {
+            if (!good.isSulfuras() && !good.isRegularGoods()) {
                 good.setSellIn(good.getSellIn() - 1);
             }
 
@@ -42,10 +42,6 @@ class GildedRose {
 
                 if (good.isBackstagePasses()) {
                     good.setQuality(MIN_QUALITY);
-                }
-
-                if (good.isRegularGoods() && good.getQuality() > MIN_QUALITY) {
-                    good.setQuality(good.getQuality() - 1);
                 }
             }
         }

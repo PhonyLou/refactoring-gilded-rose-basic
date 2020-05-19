@@ -57,4 +57,20 @@ public class Item {
     boolean isRegularGoods() {
         return !isSulfuras() && !isBackstagePasses() && !isAgedBrie();
     }
+
+    void updateRegularGoodsWhenOneDayPassed() {
+        int nextQuality = this.getQuality();
+        if (this.getQuality() > MIN_QUALITY) {
+            nextQuality = this.getQuality() - 1;
+        }
+
+        this.setSellIn(this.getSellIn() - 1);
+
+        if (this.getSellIn() < 0) {
+            if (nextQuality > MIN_QUALITY) {
+                nextQuality = nextQuality -1;
+            }
+        }
+        this.setQuality(nextQuality);
+    }
 }
