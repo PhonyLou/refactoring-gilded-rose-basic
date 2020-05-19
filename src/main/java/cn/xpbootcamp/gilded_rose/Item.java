@@ -2,6 +2,10 @@ package cn.xpbootcamp.gilded_rose;
 
 public class Item {
 
+    public String getName() {
+        return name;
+    }
+
     public String name;
 
     public int sell_in;
