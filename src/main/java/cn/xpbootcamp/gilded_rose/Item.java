@@ -10,6 +10,14 @@ public class Item {
 
     public int sellIn;
 
+    public int getSellIn() {
+        return sellIn;
+    }
+
+    public void setSellIn(int sellIn) {
+        this.sellIn = sellIn;
+    }
+
     public int quality;
 
     public int getQuality() {
