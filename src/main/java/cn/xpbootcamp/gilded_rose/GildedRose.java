@@ -1,8 +1,5 @@
 package cn.xpbootcamp.gilded_rose;
 
-import static cn.xpbootcamp.gilded_rose.Item.MAX_QUALITY;
-import static cn.xpbootcamp.gilded_rose.Item.MIN_QUALITY;
-
 class GildedRose {
     Item[] goods;
 
@@ -11,13 +8,13 @@ class GildedRose {
     }
 
     public void update_quality() {
-        for (Item good : goods) {
-            if (good.isRegularGoods()) {
-                good.updateRegularGoodsWhenOneDayPassed();
-            } else if (good.isAgedBrie()) {
-                good.updateAgedBrieWhenOneDayPassed();
-            } else if (good.isBackstagePasses()) {
-                good.updateBackstagePassesWhenOneDayPassed();
+        for (Item goodsItem : goods) {
+            if (goodsItem.isRegularGoods()) {
+                goodsItem.updateRegularGoodsWhenOneDayPassed();
+            } else if (goodsItem.isAgedBrie()) {
+                goodsItem.updateAgedBrieWhenOneDayPassed();
+            } else if (goodsItem.isBackstagePasses()) {
+                goodsItem.updateBackstagePassesWhenOneDayPassed();
             }
         }
     }
