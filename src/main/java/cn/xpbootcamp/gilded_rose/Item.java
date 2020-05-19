@@ -90,4 +90,26 @@ public class Item {
 
         this.setQuality(nextQuality);
     }
+
+    void updateBackstagePassesWhenOneDayPassed() {
+        int nextQuality = this.getQuality();
+
+        if (this.getQuality() < MAX_QUALITY) {
+            nextQuality = this.getQuality() + 1;
+        }
+        if (this.getSellIn() < 11 && nextQuality < MAX_QUALITY) {
+            nextQuality = nextQuality + 1;
+        }
+        if (this.getSellIn() < 6 && nextQuality < MAX_QUALITY) {
+            nextQuality = nextQuality + 1;
+        }
+
+        this.setSellIn(this.getSellIn() - 1);
+
+        if (this.getSellIn() < 0) {
+            nextQuality = MIN_QUALITY;
+        }
+
+        this.setQuality(nextQuality);
+    }
 }

@@ -17,28 +17,7 @@ class GildedRose {
             } else if (good.isAgedBrie()) {
                 good.updateAgedBrieWhenOneDayPassed();
             } else if (good.isBackstagePasses()) {
-                if (good.getQuality() < MAX_QUALITY) {
-                    good.setQuality(good.getQuality() + 1);
-                }
-                if (good.getSellIn() < 11 && good.getQuality() < MAX_QUALITY) {
-                    good.setQuality(good.getQuality() + 1);
-                }
-
-                if (good.getSellIn() < 6 && good.getQuality() < MAX_QUALITY) {
-                    good.setQuality(good.getQuality() + 1);
-                }
-            }
-
-            if (!good.isSulfuras() && !good.isRegularGoods() && !good.isAgedBrie()) {
-                good.setSellIn(good.getSellIn() - 1);
-            }
-
-            if (good.getSellIn() < 0) {
-
-
-                if (good.isBackstagePasses()) {
-                    good.setQuality(MIN_QUALITY);
-                }
+                good.updateBackstagePassesWhenOneDayPassed();
             }
         }
     }
