@@ -41,22 +41,17 @@ class GildedRose {
             }
 
             if (good.getSellIn() < 0) {
-                if (good.isAgedBrie()) {
-                    if (good.getQuality() < 50) {
-                        good.setQuality(good.getQuality() + 1);
-                    }
-                    continue;
+                if (good.isAgedBrie() && good.getQuality() < 50) {
+                    good.setQuality(good.getQuality() + 1);
                 }
 
                 if (good.isBackstagePasses()) {
                     good.setQuality(0);
-                    continue;
                 }
 
                 if (good.isRegularGoods() && good.getQuality() > 0) {
                     good.setQuality(good.getQuality() - 1);
                 }
-
             }
         }
     }
