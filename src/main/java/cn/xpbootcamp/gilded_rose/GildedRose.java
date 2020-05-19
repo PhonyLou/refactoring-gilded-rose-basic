@@ -12,14 +12,9 @@ class GildedRose {
 
     public void update_quality() {
         for (Item good : goods) {
-            if (!good.isAgedBrie()
-                    && !good.isBackstagePasses()) {
-                if (good.getQuality() > MIN_QUALITY) {
-                    if (!good.isSulfuras()) {
-                        good.setQuality(good.getQuality() - 1);
-                    }
-                }
-            } else {
+            if (good.isRegularGoods() && good.getQuality() > MIN_QUALITY) {
+                good.setQuality(good.getQuality() - 1);
+            } else if (good.isAgedBrie() || good.isBackstagePasses()) {
                 if (good.getQuality() < MAX_QUALITY) {
                     good.setQuality(good.getQuality() + 1);
 
