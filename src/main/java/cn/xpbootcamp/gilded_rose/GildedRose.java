@@ -1,5 +1,8 @@
 package cn.xpbootcamp.gilded_rose;
 
+import static cn.xpbootcamp.gilded_rose.Item.MAX_QUALITY;
+import static cn.xpbootcamp.gilded_rose.Item.MIN_QUALITY;
+
 class GildedRose {
     Item[] goods;
 
@@ -11,24 +14,24 @@ class GildedRose {
         for (Item good : goods) {
             if (!good.isAgedBrie()
                     && !good.isBackstagePasses()) {
-                if (good.getQuality() > 0) {
+                if (good.getQuality() > MIN_QUALITY) {
                     if (!good.isSulfuras()) {
                         good.setQuality(good.getQuality() - 1);
                     }
                 }
             } else {
-                if (good.getQuality() < 50) {
+                if (good.getQuality() < MAX_QUALITY) {
                     good.setQuality(good.getQuality() + 1);
 
                     if (good.isBackstagePasses()) {
                         if (good.getSellIn() < 11) {
-                            if (good.getQuality() < 50) {
+                            if (good.getQuality() < MAX_QUALITY) {
                                 good.setQuality(good.getQuality() + 1);
                             }
                         }
 
                         if (good.getSellIn() < 6) {
-                            if (good.getQuality() < 50) {
+                            if (good.getQuality() < MAX_QUALITY) {
                                 good.setQuality(good.getQuality() + 1);
                             }
                         }
@@ -41,15 +44,15 @@ class GildedRose {
             }
 
             if (good.getSellIn() < 0) {
-                if (good.isAgedBrie() && good.getQuality() < 50) {
+                if (good.isAgedBrie() && good.getQuality() < MAX_QUALITY) {
                     good.setQuality(good.getQuality() + 1);
                 }
 
                 if (good.isBackstagePasses()) {
-                    good.setQuality(0);
+                    good.setQuality(MIN_QUALITY);
                 }
 
-                if (good.isRegularGoods() && good.getQuality() > 0) {
+                if (good.isRegularGoods() && good.getQuality() > MIN_QUALITY) {
                     good.setQuality(good.getQuality() - 1);
                 }
             }

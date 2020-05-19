@@ -2,6 +2,9 @@ package cn.xpbootcamp.gilded_rose;
 
 public class Item {
 
+    public static final int MAX_QUALITY = 50;
+    public static final int MIN_QUALITY = 0;
+
     public String getName() {
         return name;
     }
