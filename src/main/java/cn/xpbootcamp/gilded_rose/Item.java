@@ -42,4 +42,8 @@ public class Item {
     boolean isAgedBrie() {
         return "Aged Brie".equals(this.getName());
     }
+
+    boolean isBackstagePasses() {
+        return "Backstage passes to a TAFKAL80ETC concert".equals(this.getName());
+    }
 }
