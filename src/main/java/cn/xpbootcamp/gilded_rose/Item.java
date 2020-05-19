@@ -6,9 +6,9 @@ public class Item {
         return name;
     }
 
-    public String name;
+    private final String name;
 
-    public int sellIn;
+    private int sellIn;
 
     public int getSellIn() {
         return sellIn;
@@ -18,7 +18,7 @@ public class Item {
         this.sellIn = sellIn;
     }
 
-    public int quality;
+    private int quality;
 
     public int getQuality() {
         return quality;
