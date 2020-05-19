@@ -21,13 +21,13 @@ class GildedRose {
                     goods[i].setQuality(goods[i].getQuality() + 1);
 
                     if (goods[i].getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
-                        if (goods[i].sell_in < 11) {
+                        if (goods[i].sellIn < 11) {
                             if (goods[i].getQuality() < 50) {
                                 goods[i].setQuality(goods[i].getQuality() + 1);
                             }
                         }
 
-                        if (goods[i].sell_in < 6) {
+                        if (goods[i].sellIn < 6) {
                             if (goods[i].getQuality() < 50) {
                                 goods[i].setQuality(goods[i].getQuality() + 1);
                             }
@@ -37,10 +37,10 @@ class GildedRose {
             }
 
             if (!goods[i].getName().equals("Sulfuras, Hand of Ragnaros")) {
-                goods[i].sell_in = goods[i].sell_in - 1;
+                goods[i].sellIn = goods[i].sellIn - 1;
             }
 
-            if (goods[i].sell_in < 0) {
+            if (goods[i].sellIn < 0) {
                 if (!goods[i].getName().equals("Aged Brie")) {
                     if (!goods[i].getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (goods[i].getQuality() > 0) {
