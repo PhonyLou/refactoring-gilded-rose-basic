@@ -19,16 +19,12 @@ class GildedRose {
                     good.setQuality(good.getQuality() + 1);
 
                     if (good.isBackstagePasses()) {
-                        if (good.getSellIn() < 11) {
-                            if (good.getQuality() < MAX_QUALITY) {
-                                good.setQuality(good.getQuality() + 1);
-                            }
+                        if (good.getSellIn() < 11 && good.getQuality() < MAX_QUALITY) {
+                            good.setQuality(good.getQuality() + 1);
                         }
 
-                        if (good.getSellIn() < 6) {
-                            if (good.getQuality() < MAX_QUALITY) {
-                                good.setQuality(good.getQuality() + 1);
-                            }
+                        if (good.getSellIn() < 6 && good.getQuality() < MAX_QUALITY) {
+                            good.setQuality(good.getQuality() + 1);
                         }
                     }
                 }
