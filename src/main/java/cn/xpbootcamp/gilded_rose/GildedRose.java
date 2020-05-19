@@ -9,7 +9,8 @@ class GildedRose {
 
     public void update_quality() {
         for (int i = 0; i < goods.length; i++) {
-            if (!goods[i].getName().equals("Aged Brie")
+            String agedBrie = "Aged Brie";
+            if (!goods[i].getName().equals(agedBrie)
                     && !goods[i].getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (goods[i].getQuality() > 0) {
                     if (!goods[i].getName().equals("Sulfuras, Hand of Ragnaros")) {
@@ -41,7 +42,7 @@ class GildedRose {
             }
 
             if (goods[i].getSellIn() < 0) {
-                if (!goods[i].getName().equals("Aged Brie")) {
+                if (!goods[i].getName().equals(agedBrie)) {
                     if (!goods[i].getName().equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (goods[i].getQuality() > 0) {
                             if (!goods[i].getName().equals("Sulfuras, Hand of Ragnaros")) {
