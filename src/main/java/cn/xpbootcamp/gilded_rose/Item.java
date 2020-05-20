@@ -62,12 +62,12 @@ public class Item {
         int operation(int q);
     }
     private int nextQuality(int q, QualityOperation qualityOperation){
-        return qualityOperation.operation(q);
+        if (this.getSellIn() < 0) return qualityOperation.operation(q);
+        else return q;
     }
 
-    QualityOperation updateAgedBrie = (int q) -> {
-        if (this.getSellIn() < 0 && q > MIN_QUALITY)
-            q = q - 1;
+    QualityOperation updateAgedBrie = q -> {
+        if (q > MIN_QUALITY) q = q - 1;
         return q;
     };
 
