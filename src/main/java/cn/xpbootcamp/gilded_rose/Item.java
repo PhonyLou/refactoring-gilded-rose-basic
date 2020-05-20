@@ -72,12 +72,9 @@ public class Item {
         if (q > MIN_QUALITY) q = q - 1;
         return q;
     };
-
     void updateRegularGoodsWhenOneDayPassed() {
         int nextQuality = this.getQuality();
-        if (this.getQuality() > MIN_QUALITY) {
-            nextQuality = this.getQuality() - 1;
-        }
+        if (this.getQuality() > MIN_QUALITY) nextQuality = this.getQuality() - 1;
 
         this.setQuality(toNextQuality(nextQuality, updateRegularGoods));
     }
@@ -97,15 +94,9 @@ public class Item {
     void updateBackstagePassesWhenOneDayPassed() {
         int nextQuality = this.getQuality();
 
-        if (this.getQuality() < MAX_QUALITY) {
-            nextQuality = this.getQuality() + 1;
-        }
-        if (this.getSellIn() < 11 && nextQuality < MAX_QUALITY) {
-            nextQuality = nextQuality + 1;
-        }
-        if (this.getSellIn() < 6 && nextQuality < MAX_QUALITY) {
-            nextQuality = nextQuality + 1;
-        }
+        if (this.getQuality() < MAX_QUALITY) nextQuality = this.getQuality() + 1;
+        if (this.getSellIn() < 11 && nextQuality < MAX_QUALITY) nextQuality = nextQuality + 1;
+        if (this.getSellIn() < 6 && nextQuality < MAX_QUALITY) nextQuality = nextQuality + 1;
 
         this.setQuality(toNextQuality(nextQuality, updateBackstagePasses));
     }
