@@ -58,6 +58,18 @@ public class Item {
         return !isSulfuras() && !isBackstagePasses() && !isAgedBrie();
     }
 
+    interface QualityOperation {
+        int operation(int q);
+    }
+    private int operate(int q, QualityOperation qualityOperation){
+        return qualityOperation.operation(q);
+    }
+
+    QualityOperation updateAgedBrie = (int q) -> {
+        if (q > MIN_QUALITY) q = q - 1;
+        return q;
+    };
+
     void updateRegularGoodsWhenOneDayPassed() {
         int nextQuality = this.getQuality();
         if (this.getQuality() > MIN_QUALITY) {
@@ -67,9 +79,7 @@ public class Item {
         this.setSellIn(this.getSellIn() - 1);
 
         if (this.getSellIn() < 0) {
-            if (nextQuality > MIN_QUALITY) {
-                nextQuality = nextQuality -1;
-            }
+            nextQuality = operate(nextQuality, updateAgedBrie);
         }
         this.setQuality(nextQuality);
     }
