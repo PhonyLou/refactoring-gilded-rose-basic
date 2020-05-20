@@ -80,21 +80,16 @@ public class Item {
         this.setQuality(nextQuality(nextQuality, updateRegularGoods));
     }
 
+    private final QualityOperation updateAgedBrie = q -> {
+        if (q < MAX_QUALITY) q = q + 1;
+        return q;
+    };
     void updateAgedBrieWhenOneDayPassed() {
         int nextQuality = this.getQuality();
-        if (this.getQuality() < MAX_QUALITY) {
-            nextQuality = this.getQuality() + 1;
-        }
+        if (this.getQuality() < MAX_QUALITY) nextQuality = this.getQuality() + 1;
 
         this.setSellIn(this.getSellIn() - 1);
-
-        if (this.getSellIn() < 0) {
-            if (nextQuality < MAX_QUALITY) {
-                nextQuality = nextQuality + 1;
-            }
-        }
-
-        this.setQuality(nextQuality);
+        this.setQuality(nextQuality(nextQuality, updateAgedBrie));
     }
 
     void updateBackstagePassesWhenOneDayPassed() {
