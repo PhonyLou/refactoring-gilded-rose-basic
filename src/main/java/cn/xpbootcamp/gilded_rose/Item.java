@@ -61,7 +61,7 @@ public class Item {
     private interface QualityOperation {
         int operation(int q);
     }
-    private int nextQuality(int q, QualityOperation qualityOperation){
+    private int toNextQuality(int q, QualityOperation qualityOperation){
         if (this.getSellIn() < 0) return qualityOperation.operation(q);
         else return q;
     }
@@ -77,7 +77,7 @@ public class Item {
             nextQuality = this.getQuality() - 1;
         }
         this.setSellIn(this.getSellIn() - 1);
-        this.setQuality(nextQuality(nextQuality, updateRegularGoods));
+        this.setQuality(toNextQuality(nextQuality, updateRegularGoods));
     }
 
     private final QualityOperation updateAgedBrie = q -> {
@@ -89,9 +89,10 @@ public class Item {
         if (this.getQuality() < MAX_QUALITY) nextQuality = this.getQuality() + 1;
 
         this.setSellIn(this.getSellIn() - 1);
-        this.setQuality(nextQuality(nextQuality, updateAgedBrie));
+        this.setQuality(toNextQuality(nextQuality, updateAgedBrie));
     }
 
+    private final QualityOperation updateBackstagePasses = q -> MIN_QUALITY;
     void updateBackstagePassesWhenOneDayPassed() {
         int nextQuality = this.getQuality();
 
@@ -106,11 +107,6 @@ public class Item {
         }
 
         this.setSellIn(this.getSellIn() - 1);
-
-        if (this.getSellIn() < 0) {
-            nextQuality = MIN_QUALITY;
-        }
-
-        this.setQuality(nextQuality);
+        this.setQuality(toNextQuality(nextQuality, updateBackstagePasses));
     }
 }
