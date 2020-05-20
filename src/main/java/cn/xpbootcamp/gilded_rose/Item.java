@@ -4,14 +4,24 @@ public class Item {
 
     private static final int MAX_QUALITY = 50;
     private static final int MIN_QUALITY = 0;
+    private final String name;
+    private int sellIn;
+    QualityOperation updateAgedBrie = (int q) -> {
+        if (this.getSellIn() < 0 && q > MIN_QUALITY)
+            q = q - 1;
+        return q;
+    };
+    private int quality;
+
+    public Item(String name, int sellIn, int quality) {
+        this.name = name;
+        this.sellIn = sellIn;
+        this.quality = quality;
+    }
 
     public String getName() {
         return name;
     }
-
-    private final String name;
-
-    private int sellIn;
 
     public int getSellIn() {
         return sellIn;
@@ -21,19 +31,11 @@ public class Item {
         this.sellIn = sellIn;
     }
 
-    private int quality;
-
     public int getQuality() {
         return quality;
     }
 
     public void setQuality(int quality) {
-        this.quality = quality;
-    }
-
-    public Item(String name, int sellIn, int quality) {
-        this.name = name;
-        this.sellIn = sellIn;
         this.quality = quality;
     }
 
@@ -58,18 +60,9 @@ public class Item {
         return !isSulfuras() && !isBackstagePasses() && !isAgedBrie();
     }
 
-    interface QualityOperation {
-        int operation(int q);
-    }
-    private int nextQuality(int q, QualityOperation qualityOperation){
+    private int nextQuality(int q, QualityOperation qualityOperation) {
         return qualityOperation.operation(q);
     }
-
-    QualityOperation updateAgedBrie = (int q) -> {
-        if (this.getSellIn() < 0 && q > MIN_QUALITY)
-            q = q - 1;
-        return q;
-    };
 
     void updateRegularGoodsWhenOneDayPassed() {
         int nextQuality = this.getQuality();
@@ -117,5 +110,9 @@ public class Item {
         }
 
         this.setQuality(nextQuality);
+    }
+
+    interface QualityOperation {
+        int operation(int q);
     }
 }
