@@ -58,7 +58,7 @@ public class Item {
         return !isSulfuras() && !isBackstagePasses() && !isAgedBrie();
     }
 
-    interface QualityOperation {
+    private interface QualityOperation {
         int operation(int q);
     }
     private int nextQuality(int q, QualityOperation qualityOperation){
@@ -66,7 +66,7 @@ public class Item {
         else return q;
     }
 
-    QualityOperation updateAgedBrie = q -> {
+    private final QualityOperation updateRegularGoods = q -> {
         if (q > MIN_QUALITY) q = q - 1;
         return q;
     };
@@ -77,7 +77,7 @@ public class Item {
             nextQuality = this.getQuality() - 1;
         }
         this.setSellIn(this.getSellIn() - 1);
-        this.setQuality(nextQuality(nextQuality, updateAgedBrie));
+        this.setQuality(nextQuality(nextQuality, updateRegularGoods));
     }
 
     void updateAgedBrieWhenOneDayPassed() {
