@@ -61,12 +61,13 @@ public class Item {
     interface QualityOperation {
         int operation(int q);
     }
-    private int operate(int q, QualityOperation qualityOperation){
+    private int nextQuality(int q, QualityOperation qualityOperation){
         return qualityOperation.operation(q);
     }
 
     QualityOperation updateAgedBrie = (int q) -> {
-        if (q > MIN_QUALITY) q = q - 1;
+        if (this.getSellIn() < 0 && q > MIN_QUALITY)
+            q = q - 1;
         return q;
     };
 
@@ -75,13 +76,8 @@ public class Item {
         if (this.getQuality() > MIN_QUALITY) {
             nextQuality = this.getQuality() - 1;
         }
-
         this.setSellIn(this.getSellIn() - 1);
-
-        if (this.getSellIn() < 0) {
-            nextQuality = operate(nextQuality, updateAgedBrie);
-        }
-        this.setQuality(nextQuality);
+        this.setQuality(nextQuality(nextQuality, updateAgedBrie));
     }
 
     void updateAgedBrieWhenOneDayPassed() {
