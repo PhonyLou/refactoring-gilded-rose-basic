@@ -5,7 +5,7 @@ public class Item {
     private static final int MAX_QUALITY = 50;
     private static final int MIN_QUALITY = 0;
 
-    public String getName() {
+    private String getName() {
         return name;
     }
 
@@ -13,21 +13,21 @@ public class Item {
 
     private int sellIn;
 
-    public int getSellIn() {
+    private int getSellIn() {
         return sellIn;
     }
 
-    public void setSellIn(int sellIn) {
+    private void setSellIn(int sellIn) {
         this.sellIn = sellIn;
     }
 
     private int quality;
 
-    public int getQuality() {
+    private int getQuality() {
         return quality;
     }
 
-    public void setQuality(int quality) {
+    private void setQuality(int quality) {
         this.quality = quality;
     }
 
